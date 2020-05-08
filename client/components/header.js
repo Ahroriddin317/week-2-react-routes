@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 
 const Header = () => {
   const [toggled, toggle] = useState(false)
+  const locationClick = (e) => {
+    e.preventDefault()
+    window.location.assign("https://www.google.com/")
+  }
 
   return (
     <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
@@ -29,6 +33,7 @@ const Header = () => {
           <button
             type="button"
             className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
+            onClick={locationClick}
           >
             <svg
               className="fill-current h-3 w-3"
