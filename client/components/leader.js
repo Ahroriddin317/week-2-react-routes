@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { history } from '../redux'
 
 const Leader = () => {
   const [inputValue, setInputValue] = useState('')
@@ -11,6 +12,7 @@ const Leader = () => {
   const handlBtnClick = (e) => {
     e.preventDefaulr()
     setInputValue('')
+    history.push()
   }
   return (
     <form>
