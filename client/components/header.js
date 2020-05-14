@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-const Header = () => {
+const Header = (props) => {
   const { userName } = useParams()
   return (
     <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
@@ -20,9 +20,11 @@ const Header = () => {
       <Link id="go-back" to="/" className="text-white">
         go-back
       </Link>
-      <Link id="go-repository-list" to={`/${userName}`} className="text-white">
-        go-repository-list
-      </Link>
+      {props.repositorylist && (
+        <Link id="go-repository-list" to={`/${userName}`} className="text-white">
+          go-repository-list
+        </Link>
+      )}
     </nav>
   )
 }
