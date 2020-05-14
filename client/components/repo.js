@@ -14,7 +14,7 @@ const Repo = () => {
         `https://api.github.com/repos/${userName}/${repositoryName}/contents/README.md?ref=master`
       )
       .then((it) => {
-        setDescription(it.data.content)
+        setDescription(atob(it.data.content))
       })
   }, [userName, repositoryName])
   return (
