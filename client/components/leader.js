@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { history } from '../redux'
 
 const Leader = () => {
@@ -10,12 +9,12 @@ const Leader = () => {
   }
 
   const handlBtnClick = (e) => {
-    e.preventDefaulr()
+    e.preventDefault()
     setInputValue('')
-    history.push()
+    history.push(`/${inputValue}`)
   }
   return (
-    <form className="w-full max-w-sm m-8">
+    <form className="w-full max-w-sm m-8" onSubmit={handlBtnClick}>
       <div className="flex items-center border-b border-b-2 border-teal-500 py-2">
         <input
           id="input-field"
@@ -24,16 +23,14 @@ const Leader = () => {
           placeholder="write userName"
           onChange={handlInputChange}
         />
-        <Link to={`/${inputValue}`}>
-          <button
-            id="search-button"
-            className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
-            type="submit"
-            onClick={handlBtnClick}
-          >
-            search
-          </button>
-        </Link>
+        <button
+          id="search-button"
+          className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+          type="button"
+          onClick={handlBtnClick}
+        >
+          search
+        </button>
       </div>
     </form>
   )
