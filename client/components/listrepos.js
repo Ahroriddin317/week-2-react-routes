@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
-import Header from './header'
 
-const ListRepos = () => {
-  const { userName } = useParams()
+const ListRepos = ({ userName }) => {
   const [repos, setRepos] = useState([])
   useEffect(() => {
     axios.get(`https://api.github.com/users/${userName}/repos`).then((it) => {
@@ -13,7 +11,6 @@ const ListRepos = () => {
   }, [userName])
   return (
     <div>
-      <Header repositorylist={false} />
       <div>
         {repos.map((repo) => {
           return (

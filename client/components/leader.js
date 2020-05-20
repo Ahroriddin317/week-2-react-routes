@@ -14,7 +14,7 @@ const Leader = () => {
     history.push(`/${inputValue}`)
   }
   return (
-    <form className="w-full max-w-sm m-8" onSubmit={handlBtnClick}>
+    <form className="flex items-center justify-center h-screen" onSubmit={handlBtnClick}>
       <div className="flex items-center border-b border-b-2 border-teal-500 py-2">
         <input
           id="input-field"

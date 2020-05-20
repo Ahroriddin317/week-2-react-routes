@@ -1,18 +1,24 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Route, Switch, useParams } from 'react-router-dom'
 import Header from './header'
+import Leader from './leader'
+import ListRepos from './listrepos'
+import Repo from './repo'
 
 const Home = () => {
+  const { userName, repositoryName } = useParams()
   return (
     <div>
-      <Header />
-      <div className="flex items-center justify-center h-screen">
-        <div className="bg-indigo-800 text-white font-bold rounded-lg border shadow-lg p-10">
-          <div id="title">Dashboard</div>
-          <Link to="/dashboard/profile/9c1402ae-f277-40ce-9d80-31663c6ea535">Go To Profile</Link>
-          <Link to="/dashboard/main">Go To Main</Link>
-        </div>
-      </div>
+      {userName && <Header userName={userName} repositoryName={repositoryName} />}
+      <Switch>
+        <Route exact path="/" component={() => <Leader />} />
+        <Route exact path="/:userName" component={() => <ListRepos userName={userName} />} />
+        <Route
+          exact
+          path="/:userName/:repositoryName"
+          component={() => <Repo userName={userName} repositoryName={repositoryName} />}
+        />
+      </Switch>
     </div>
   )
 }

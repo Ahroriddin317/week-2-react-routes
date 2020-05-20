@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown/with-html'
 import axios from 'axios'
-import Header from './header'
 
-const Repo = () => {
-  const { userName } = useParams()
-  const { repositoryName } = useParams()
+const Repo = ({ userName, repositoryName }) => {
   const [description, setDescription] = useState([])
   useEffect(() => {
     axios
@@ -19,7 +15,6 @@ const Repo = () => {
   }, [userName, repositoryName])
   return (
     <div>
-      <Header repositorylist />
       <div id="description">
         <ReactMarkdown source={description} escapeHtml={false} />
       </div>
