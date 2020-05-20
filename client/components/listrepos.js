@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 
-const ListRepos = ({ userName }) => {
-  const [repos, setRepos] = useState([])
-  useEffect(() => {
-    axios.get(`https://api.github.com/users/${userName}/repos`).then((it) => {
-      setRepos(it.data.map((item) => item.name))
-    })
-  }, [userName])
+const ListRepos = ({ listRepositorys, userName }) => {
   return (
     <div>
       <div>
-        {repos.map((repo) => {
+        {listRepositorys.map((repo) => {
           return (
             <div
               className="flex justify-center items-center bg-blue-500 text-white text-center text-sm font-bold rounded-lg w-25 m-6"

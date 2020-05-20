@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { history } from '../redux'
 
-const Leader = () => {
+const InputView = () => {
   const [inputValue, setInputValue] = useState('')
 
   const handlInputChange = (e) => {
@@ -36,4 +36,4 @@ const Leader = () => {
   )
 }
 
-export default Leader
+export default InputView
