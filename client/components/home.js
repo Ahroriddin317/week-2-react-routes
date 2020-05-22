@@ -12,19 +12,23 @@ const Home = () => {
   const [readmeMD, setReadmeMD] = useState([])
 
   useEffect(() => {
-    axios.get(`https://api.github.com/users/${userName}/repos`).then((it) => {
-      setRepos(it.data.map((item) => item.name))
-    })
+    if (typeof userName !== 'undefined' && repos.length === 0) {
+      axios.get(`https://api.github.com/users/${userName}/repos`).then((it) => {
+        setRepos(it.data.map((item) => item.name))
+      })
+    }
   }, [userName])
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.github.com/repos/${userName}/${repositoryName}/contents/README.md?ref=master`
-      )
-      .then((it) => {
-        setReadmeMD(atob(it.data.content))
-      })
+    if (typeof repositoryName !== 'undefined') {
+      axios
+        .get(
+          `https://api.github.com/repos/${userName}/${repositoryName}/contents/README.md?ref=master`
+        )
+        .then((it) => {
+          setReadmeMD(atob(it.data.content))
+        })
+    }
   }, [userName, repositoryName])
   return (
     <div>
